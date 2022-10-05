@@ -16,13 +16,11 @@
         methods: {
           async fetchScriptText() {
             const response = await fetch("http://localhost:8000")
-            console.log(response)
             return response.text()
           },
           async injectBokeh() {
             const scriptText = await this.fetchScriptText()
             const _script = new DOMParser().parseFromString(scriptText, 'text/html').scripts[0]
-            console.log(new DOMParser().parseFromString(scriptText, 'text/html'))
             const script = document.createElement("script")
             script.id = _script.id
             script.innerHTML = _script.innerHTML
